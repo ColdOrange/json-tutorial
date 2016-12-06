@@ -28,7 +28,7 @@ static int test_pass = 0;
     EXPECT_EQ_BASE((expect) == (actual), expect, actual, "%lf")
 
 #define EXPECT_EQ_STRING(expect, actual, alength) \
-    EXPECT_EQ_BASE(sizeof(expect) - 1 == alength && memcmp(expect, actual, alength) == 0, expect, actual, "%s")
+    EXPECT_EQ_BASE(sizeof(expect) - 1 == alength && memcmp(expect, actual, alength + 1) == 0, expect, actual, "%s")
 
 #define EXPECT_FALSE(actual) \
     EXPECT_EQ_BASE((actual) == 0, "false", "true", "%s")

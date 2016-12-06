@@ -323,7 +323,8 @@ static int lept_parse_object(lept_context* c, lept_value* v)
             break;
         }
         m.k= (char*)malloc(m.klen+1);
-        memcpy(m.k, s, m.klen+1);
+        memcpy(m.k, s, m.klen);
+        m.k[m.klen] = '\0';
         lept_parse_whitespace(c);   /* parse whitespace around */
         if (*c->json != ':') {
             ret = LEPT_PARSE_MISS_COLON;
